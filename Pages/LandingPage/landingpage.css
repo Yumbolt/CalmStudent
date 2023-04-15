@@ -48,6 +48,7 @@ body {
   padding-right: 16px;
   padding-bottom: 8px;
   background-color: peru;
+  margin-left: 50%;
 }
 .landing-page-image {
   width: 20rem;
@@ -66,7 +67,10 @@ body {
     text-align: center;
   }
   .landing-page-image {
-    width: 80%;
+    width: 55%;
+  }
+  .landing-page-button {
+    position: relative;
   }
 }
 @media (max-width: 767px) {
