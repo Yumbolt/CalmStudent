@@ -13,8 +13,7 @@ body {
   flex-direction: column;
   align-items: center;
   height: 100vh;
-  position: absolute;
-  top: 150px;
+  background: linear-gradient(90deg, #1cb5e0 0%, #000851 100%);
 }
 
 .login-login {
@@ -26,6 +25,8 @@ body {
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 25%;
 }
 
 h2,
