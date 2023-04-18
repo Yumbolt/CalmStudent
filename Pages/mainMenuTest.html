@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hamburger Menu</title>
+    <link rel="stylesheet" href="/Pages/mainMenuTest.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+      integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul class="nav-bar">
+          <li class="logo">
+            <a href="#"><img src="/Images/logo.png" /></a>
+          </li>
+          <input type="checkbox" id="check" />
+          <span class="menu">
+            <li><a href="">Home</a></li>
+            <li><a href="">Products</a></li>
+            <li><a href="">Services</a></li>
+            <label for="check" class="close-menu"
+              ><i class="fas fa-times"></i
+            ></label>
+          </span>
+          <label for="check" class="open-menu"
+            ><i class="fas fa-bars"></i
+          ></label>
+        </ul>
+      </nav>
+    </header>
+    <div class="main-menu-main-menu">
+      <div class="main-menu-container1">
+        <img
+          alt="image"
+          src="/Images/pexels-cottonbro-studio-4153146.jpg"
+          class="main-menu-image1"
+        />
+        <div class="main-menu-container2">
+          <!-- Booking Manager -->
+          <div class="main-menu-manage-meeting">
+            <span class="main-menu-text">
+              Manage Bookings with Personal Supervisor
+            </span>
+            <a href="/Pages/meetingScheduler.html"
+              ><button class="main-menu-button button">
+                <span class="main-menu-text1">Booking manager</span>
+              </button></a
+            >
+          </div>
+          <!-- Mental Journal -->
+          <div class="main-menu-manage-meeting1">
+            <span class="main-menu-text5">
+              Track your mental health with journal
+            </span>
+            <a href="https://example.com/mental-journal"
+              ><button class="main-menu-button1 button">
+                Mental Journal
+              </button></a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
