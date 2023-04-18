@@ -42,7 +42,10 @@
             class="login-password-icon"
           />
         </div>
-        <button class="button login-login-button">
+        <button
+          class="button login-login-button"
+          onclick="redirectToMainMenu()"
+        >
           <span class="login-button-text">LOGIN</span>
         </button>
         <div class="login-recover-container">
@@ -54,4 +57,14 @@
       </div>
     </div>
   </body>
+
+  <script>
+    function redirectToMainMenu() {
+      const userId = document.getElementById("university-id").value;
+      const password = document.getElementById("password").value;
+      sessionStorage.setItem("userId", userId);
+      sessionStorage.setItem("password", password);
+      window.location.href = "/Pages/mainMenuTest.html";
+    }
+  </script>
 </html>

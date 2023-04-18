@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mental Journal</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f3f3f3;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #ffffff;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+      }
+
+      h1 {
+        margin-top: 0;
+        text-align: center;
+        color: #333;
+      }
+
+      .moods {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+      }
+
+      .mood {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        width: 100px;
+        margin-bottom: 10px;
+      }
+
+      .mood img {
+        width: 50px;
+        height: 50px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        color: #333;
+      }
+
+      input[type="date"] {
+        margin-bottom: 10px;
+        padding: 5px;
+        border-radius: 3px;
+        border: 1px solid #ccc;
+      }
+
+      textarea {
+        width: 100%;
+        padding: 5px;
+        border-radius: 3px;
+        border: 1px solid #ccc;
+        resize: vertical;
+      }
+
+      .record {
+        background-color: #eee;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+
+      .record-date {
+        font-weight: bold;
+      }
+
+      .record-mood {
+        font-style: italic;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Mental Journal</h1>
+      <div class="moods">
+        <div class="mood" onclick="selectMood('happy')">
+          <img src="/Images/smile.png" alt="Happy" />
+          <span>Happy</span>
+        </div>
+        <div class="mood" onclick="selectMood('sad')">
+          <img src="/Images/sad.png" alt="Sad" />
+          <span>Sad</span>
+        </div>
+        <div class="mood" onclick="selectMood('angry')">
+          <img src="/Images/angry.png" alt="Angry" />
+          <span>Angry</span>
+        </div>
+        <div class="mood" onclick="selectMood('calm')">
+          <img src="calm.png" alt="Calm" />
+          <span>Calm</span>
+        </div>
+        <div class="mood" onclick="selectMood('stressed')">
+          <img src="stressed.png" alt="Stressed" />
+          <span>Stressed</span>
+        </div>
+        <div class="mood" onclick="selectMood('inspired')">
+          <img src="inspired.png" alt="Inspired" />
+          <span>Inspired</span>
+        </div>
+      </div>
+      <label for="date">Date:</label>
+      <input type="date" id="date" />
+      <label for="diary">Diary Entry:</label>
+      <textarea
+        id="diary"
+        rows="5"
+        placeholder="Write your thoughts here..."
+      ></textarea>
+      <button onclick="saveEntry()">Save Entry</button>
+
+      <h2>Previous Entries</h2>
+      <div id="previous-entries"></div>
+    </div>
+
+    <script>
+      let selectedMood = "";
+
+      function selectMood(mood) {
+        selectedMood = mood;
+        console.log("Selected mood:", selectedMood);
+      }
+
+      function saveEntry() {
+        const date = document.getElementById("date").value;
+        const diaryEntry = document.getElementById("diary").value;
+
+        if (!selectedMood || !date || !diaryEntry) {
+          alert("Please select a mood, date, and write a diary entry.");
+          return;
+        }
+
+        console.log("Mood:", selectedMood);
+        console.log("Date:", date);
+        console.log("Diary Entry:", diaryEntry);
+
+        // Save the data here, e.g., call an API or store the data locally.
+        const entries = JSON.parse(localStorage.getItem("entries") || "[]");
+        entries.push({ mood: selectedMood, date, diaryEntry });
+        localStorage.setItem("entries", JSON.stringify(entries));
+
+        displayEntries();
+      }
+
+      function displayEntries() {
+        const entries = JSON.parse(localStorage.getItem("entries") || "[]");
+        const previousEntriesDiv = document.getElementById("previous-entries");
+
+        previousEntriesDiv.innerHTML = "";
+
+        entries.forEach((entry, index) => {
+          const recordDiv = document.createElement("div");
+          recordDiv.classList.add("record");
+
+          const dateSpan = document.createElement("span");
+          dateSpan.classList.add("record-date");
+          dateSpan.textContent = entry.date;
+
+          const moodSpan = document.createElement("span");
+          moodSpan.classList.add("record-mood");
+          moodSpan.textContent = entry.mood;
+
+          const entryP = document.createElement("p");
+          entryP.textContent = entry.diaryEntry;
+
+          recordDiv.appendChild(dateSpan);
+          recordDiv.appendChild(moodSpan);
+          recordDiv.appendChild(entryP);
+
+          previousEntriesDiv.appendChild(recordDiv);
+        });
+      }
+    </script>
+  </body>
+</html>
