@@ -21,12 +21,13 @@ body {
   flex-direction: column;
   width: 100%;
   max-width: 350px;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: rgba(255, 255, 255, 0.13);
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   position: absolute;
   top: 25%;
+  backdrop-filter: blur(10px);
 }
 
 h2,
@@ -46,6 +47,11 @@ h3 {
   font-size: 18px;
   font-weight: 700;
   margin-bottom: 20px;
+}
+
+.login-university-id-placeholder,
+.login-password-input {
+  background-color: rgba(255, 255, 255, 0.07);
 }
 
 .login-university-id-container,

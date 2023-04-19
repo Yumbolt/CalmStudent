@@ -4,6 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mental Journal</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -13,10 +25,21 @@
       }
 
       .container {
-        max-width: 600px;
+        max-width: 1000px;
         margin: 50px auto;
         padding: 20px;
         background-color: #ffffff;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .journal-section,
+      .previous-entries {
+        width: 48%;
+        background-color: #ffffff;
+        padding: 20px;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
         border-radius: 5px;
       }
@@ -27,25 +50,47 @@
         color: #333;
       }
 
+      .back-button {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        background-color: #333;
+        color: #fff;
+        padding: 10px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 16px;
+      }
+
       .moods {
         display: flex;
         justify-content: space-around;
         flex-wrap: wrap;
         margin-bottom: 20px;
+        width: 100%;
       }
 
       .mood {
-        display: flex;
         flex-direction: column;
         align-items: center;
         cursor: pointer;
-        width: 100px;
+        width: 70px;
         margin-bottom: 10px;
+        border: 2px solid transparent;
+        border-radius: 5px;
+        padding: 5px;
+        transition: all 0.3s ease;
+      }
+
+      .mood.selected,
+      .mood:hover {
+        border-color: #333;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
       }
 
       .mood img {
-        width: 50px;
-        height: 50px;
+        width: 35px;
+        height: 35px;
       }
 
       label {
@@ -74,66 +119,122 @@
         border-radius: 5px;
         padding: 10px;
         margin-bottom: 10px;
+        position: relative;
       }
 
       .record-date {
         font-weight: bold;
       }
 
-      .record-mood {
-        font-style: italic;
+      .record-mood img {
+        width: 30px;
+        height: 30px;
+      }
+
+      .edit-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: #333;
+        color: #fff;
+        padding: 5px 8px;
+        border-radius: 5px;
+      }
+
+      .slick-prev,
+      .slick-next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 30px;
+        height: 30px;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
+        font-size: 0;
+        line-height: 0;
+        z-index: 1;
+      }
+
+      .slick-prev:before,
+      .slick-next:before {
+        font-family: "slick";
+        font-size: 20px;
+        line-height: 30px;
+        color: white;
+      }
+
+      .slick-prev {
+        left: -40px;
+      }
+
+      .slick-next {
+        right: -40px;
       }
     </style>
   </head>
   <body>
+    <a href="mainMenu.html" class="back-button">Back</a>
     <div class="container">
-      <h1>Mental Journal</h1>
-      <div class="moods">
-        <div class="mood" onclick="selectMood('happy')">
-          <img src="/Images/smile.png" alt="Happy" />
-          <span>Happy</span>
+      <div class="journal-section">
+        <h1>Mental Journal</h1>
+        <div class="moods slider">
+          <div class="mood" onclick="selectMood('happy')">
+            <img src="/Images/smile.png" alt="Happy" />
+            <span>Happy</span>
+          </div>
+          <div class="mood" onclick="selectMood('sad')">
+            <img src="/Images/sad.png" alt="Sad" />
+            <span>Sad</span>
+          </div>
+          <div class="mood" onclick="selectMood('angry')">
+            <img src="/Images/angry.png" alt="Angry" />
+            <span>Angry</span>
+          </div>
+          <div class="mood" onclick="selectMood('calm')">
+            <img src="/Images/calm .png" alt="Calm" />
+            <span>Calm</span>
+          </div>
+          <div class="mood" onclick="selectMood('motivated')">
+            <img src="/Images/raise-hand.png" alt="Motivated" />
+            <span>Motivated</span>
+          </div>
+          <div class="mood" onclick="selectMood('inspired')">
+            <img src="/Images/inspiration.png" alt="Inspired" />
+            <span>Inspired</span>
+          </div>
         </div>
-        <div class="mood" onclick="selectMood('sad')">
-          <img src="/Images/sad.png" alt="Sad" />
-          <span>Sad</span>
-        </div>
-        <div class="mood" onclick="selectMood('angry')">
-          <img src="/Images/angry.png" alt="Angry" />
-          <span>Angry</span>
-        </div>
-        <div class="mood" onclick="selectMood('calm')">
-          <img src="calm.png" alt="Calm" />
-          <span>Calm</span>
-        </div>
-        <div class="mood" onclick="selectMood('stressed')">
-          <img src="stressed.png" alt="Stressed" />
-          <span>Stressed</span>
-        </div>
-        <div class="mood" onclick="selectMood('inspired')">
-          <img src="inspired.png" alt="Inspired" />
-          <span>Inspired</span>
-        </div>
+        <label for="date">Date:</label>
+        <input type="date" id="date" />
+        <label for="diary">Diary Entry:</label>
+        <textarea
+          id="diary"
+          rows="5"
+          placeholder="Write your thoughts here..."
+        ></textarea>
+        <button onclick="saveEntry()">Save Entry</button>
       </div>
-      <label for="date">Date:</label>
-      <input type="date" id="date" />
-      <label for="diary">Diary Entry:</label>
-      <textarea
-        id="diary"
-        rows="5"
-        placeholder="Write your thoughts here..."
-      ></textarea>
-      <button onclick="saveEntry()">Save Entry</button>
-
-      <h2>Previous Entries</h2>
-      <div id="previous-entries"></div>
+      <div class="previous-entries">
+        <h2>Previous Entries</h2>
+        <div id="previous-entries-list"></div>
+      </div>
     </div>
-
     <script>
       let selectedMood = "";
 
       function selectMood(mood) {
         selectedMood = mood;
-        console.log("Selected mood:", selectedMood);
+
+        // Clear the previous selection
+        const moodElements = document.querySelectorAll(".mood");
+        moodElements.forEach((moodElement) => {
+          moodElement.classList.remove("selected");
+        });
+
+        // Mark the selected mood
+        const selectedMoodElement = document.querySelector(
+          ".mood[onclick=\"selectMood('" + mood + "')\"]"
+        );
+        selectedMoodElement.classList.add("selected");
       }
 
       function saveEntry() {
@@ -145,11 +246,6 @@
           return;
         }
 
-        console.log("Mood:", selectedMood);
-        console.log("Date:", date);
-        console.log("Diary Entry:", diaryEntry);
-
-        // Save the data here, e.g., call an API or store the data locally.
         const entries = JSON.parse(localStorage.getItem("entries") || "[]");
         entries.push({ mood: selectedMood, date, diaryEntry });
         localStorage.setItem("entries", JSON.stringify(entries));
@@ -157,9 +253,26 @@
         displayEntries();
       }
 
+      function editEntry(index) {
+        const entries = JSON.parse(localStorage.getItem("entries") || "[]");
+        const entry = entries[index];
+
+        selectMood(entry.mood);
+        document.getElementById("date").value = entry.date;
+        document.getElementById("diary").value = entry.diaryEntry;
+
+        // Remove the entry from the list
+        entries.splice(index, 1);
+        localStorage.setItem("entries", JSON.stringify(entries));
+
+        displayEntries();
+      }
+
       function displayEntries() {
         const entries = JSON.parse(localStorage.getItem("entries") || "[]");
-        const previousEntriesDiv = document.getElementById("previous-entries");
+        const previousEntriesDiv = document.getElementById(
+          "previous-entries-list"
+        );
 
         previousEntriesDiv.innerHTML = "";
 
@@ -173,18 +286,72 @@
 
           const moodSpan = document.createElement("span");
           moodSpan.classList.add("record-mood");
-          moodSpan.textContent = entry.mood;
+          const moodImage = document.createElement("img");
+          moodImage.src = "/Images/" + entry.mood + ".png";
+          moodImage.alt = entry.mood;
+          moodSpan.appendChild(moodImage);
 
           const entryP = document.createElement("p");
           entryP.textContent = entry.diaryEntry;
 
+          const editButton = document.createElement("button");
+          editButton.classList.add("edit-button");
+          editButton.textContent = "Edit";
+          editButton.onclick = () => editEntry(index);
+
           recordDiv.appendChild(dateSpan);
           recordDiv.appendChild(moodSpan);
           recordDiv.appendChild(entryP);
+          recordDiv.appendChild(editButton);
 
           previousEntriesDiv.appendChild(recordDiv);
+
+          const deleteButton = document.createElement("button");
+          deleteButton.classList.add("delete-button");
+          deleteButton.textContent = "Delete";
+          deleteButton.onclick = () => deleteEntry(index);
+
+          recordDiv.appendChild(deleteButton);
         });
       }
+
+      function initMoodSlider() {
+        $(".moods.slider").slick({
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          autoplay: false,
+          infinite: false,
+          arrows: true,
+          prevArrow:
+            '<button type="button" class="slick-prev">Previous</button>',
+          nextArrow: '<button type="button" class="slick-next">Next</button>',
+          responsive: [
+            {
+              breakpoint: 768,
+              settings: {
+                slidesToShow: 2,
+              },
+            },
+            {
+              breakpoint: 480,
+              settings: {
+                slidesToShow: 1,
+              },
+            },
+          ],
+        });
+      }
+
+      function deleteEntry(index) {
+        const entries = JSON.parse(localStorage.getItem("entries") || "[]");
+        entries.splice(index, 1);
+        localStorage.setItem("entries", JSON.stringify(entries));
+        displayEntries();
+      }
+
+      // Display the entries when the page loads
+      initMoodSlider();
+      displayEntries();
     </script>
   </body>
 </html>
