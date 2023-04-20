@@ -21,14 +21,14 @@
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
-        background-color: #f3f3f3;
+        background: linear-gradient(90deg, #1cb5e0 0%, #000851 100%);
       }
 
       .container {
         max-width: 1000px;
         margin: 50px auto;
         padding: 20px;
-        background-color: #ffffff;
+        background-color: rgba(255, 255, 255, 0.13);
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
         border-radius: 5px;
         display: flex;
@@ -38,10 +38,14 @@
       .journal-section,
       .previous-entries {
         width: 48%;
-        background-color: #ffffff;
+        background-color: rgba(255, 255, 255, 0.07);
         padding: 20px;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
         border-radius: 5px;
+      }
+
+      .journal-section {
+        margin-right: 5%;
       }
 
       h1 {
@@ -80,6 +84,11 @@
         border-radius: 5px;
         padding: 5px;
         transition: all 0.3s ease;
+        box-sizing: border-box;
+      }
+
+      .moods.slider {
+        display: flex;
       }
 
       .mood.selected,
@@ -104,6 +113,7 @@
         padding: 5px;
         border-radius: 3px;
         border: 1px solid #ccc;
+        background-color: rgba(255, 255, 255, 0.05);
       }
 
       textarea {
@@ -112,6 +122,7 @@
         border-radius: 3px;
         border: 1px solid #ccc;
         resize: vertical;
+        background-color: rgba(255, 255, 255, 0.05);
       }
 
       .record {
@@ -120,6 +131,7 @@
         padding: 10px;
         margin-bottom: 10px;
         position: relative;
+        background-color: rgba(255, 255, 255, 0.13);
       }
 
       .record-date {
@@ -139,6 +151,54 @@
         color: #fff;
         padding: 5px 8px;
         border-radius: 5px;
+      }
+
+      .save-entry-btn {
+        width: 25%;
+        display: flex;
+        align-self: flex-end;
+        position: absolute;
+        text-align: center;
+        margin-top: 2%;
+        transition: 0.3s;
+        padding-top: 8px;
+        margin-right: 15px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        flex-direction: row;
+        padding-bottom: 0px;
+        border: 0;
+        border-radius: 6px;
+        background-image: radial-gradient(
+          100% 100% at 100% 0,
+          #5adaff 0,
+          #5468ff 100%
+        );
+        box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,
+          rgba(45, 35, 66, 0.3) 0 7px 13px -3px,
+          rgba(58, 65, 111, 0.5) 0 -3px 0 inset;
+        box-sizing: border-box;
+        color: #fff;
+        cursor: pointer;
+        display: inline-flex;
+        font-family: "JetBrains Mono", monospace;
+        justify-content: center;
+        line-height: 1;
+        height: 32px;
+        list-style: none;
+        overflow: hidden;
+        padding-left: 16px;
+        padding-right: 16px;
+        position: relative;
+        text-align: left;
+        text-decoration: none;
+        transition: box-shadow 0.15s, transform 0.15s;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        white-space: nowrap;
+        will-change: box-shadow, transform;
+        font-size: 10px;
       }
 
       .slick-prev,
@@ -173,7 +233,7 @@
     </style>
   </head>
   <body>
-    <a href="mainMenu.html" class="back-button">Back</a>
+    <a href="/Pages/mainMenuTest.html" class="back-button">Back</a>
     <div class="container">
       <div class="journal-section">
         <h1>Mental Journal</h1>
@@ -191,11 +251,11 @@
             <span>Angry</span>
           </div>
           <div class="mood" onclick="selectMood('calm')">
-            <img src="/Images/calm .png" alt="Calm" />
+            <img src="/Images/calm.png" alt="Calm" />
             <span>Calm</span>
           </div>
           <div class="mood" onclick="selectMood('motivated')">
-            <img src="/Images/raise-hand.png" alt="Motivated" />
+            <img src="/Images/motivated.png" alt="Motivated" />
             <span>Motivated</span>
           </div>
           <div class="mood" onclick="selectMood('inspired')">
@@ -211,7 +271,7 @@
           rows="5"
           placeholder="Write your thoughts here..."
         ></textarea>
-        <button onclick="saveEntry()">Save Entry</button>
+        <button class="save-entry-btn" onclick="saveEntry()">Save Entry</button>
       </div>
       <div class="previous-entries">
         <h2>Previous Entries</h2>
