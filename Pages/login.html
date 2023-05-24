@@ -54,7 +54,10 @@
         </button>
         <div class="login-recover-container">
           <span class="login-forgot-password-text">Forgot Password?</span>
-          <button class="button login-recover-button">
+          <button
+            class="button login-recover-button"
+            onclick="redirectToRecover()"
+          >
             <span class="login-recover-text">Recover</span>
           </button>
         </div>
@@ -69,6 +72,10 @@
       sessionStorage.setItem("userId", userId);
       sessionStorage.setItem("password", password);
       window.location.href = "/Pages/mainMenuTest.html";
+    }
+
+    function redirectToRecover() {
+      window.location.href = "/Pages/recoverPassword.html";
     }
   </script>
 </html>

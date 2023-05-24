@@ -1,5 +1,5 @@
 body {
-  font-family: "JetBrains Mono", monospace; /* Use the modern font across the entire body */
+  font-family: "JetBrains Mono", monospace;
   color: #ffffff;
   background: linear-gradient(90deg, #1cb5e0 0%, #000851 100%);
   margin: 0;
@@ -29,7 +29,7 @@ h1 {
 .scheduler {
   flex: 1;
   order: 1;
-  font-family: "JetBrains Mono", monospace; /* Modern font */
+  font-family: "JetBrains Mono", monospace;
 }
 
 .scheduler form {
@@ -55,12 +55,12 @@ h1 {
   border-radius: 3px;
   background-color: rgba(255, 255, 255, 0.01);
   color: #ffffff;
-  transition: border 0.3s ease; /* Animation */
+  transition: border 0.3s ease;
 }
 
 .scheduler input:hover,
 .scheduler select:hover {
-  border: 1px solid rgb(120, 2, 183); /* Hover effect */
+  border: 1px solid rgb(120, 2, 183);
 }
 
 .scheduler button {
@@ -71,13 +71,13 @@ h1 {
   font-size: 1rem;
   border-radius: 3px;
   cursor: pointer;
-  transition: background-color 0.3s ease; /* Animation */
+  transition: background-color 0.3s ease;
   margin-top: 10px;
   color: #ffffff;
 }
 
 .scheduler button:hover {
-  background-color: rgb(120, 2, 183); /* Hover effect */
+  background-color: rgb(120, 2, 183);
 }
 
 .meeting-list {

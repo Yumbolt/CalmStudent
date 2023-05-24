@@ -1,4 +1,3 @@
-// Function to display meetings
 function displayMeeting(meeting, index) {
   const meetingList = document.getElementById("meetingList");
   const meetingItem = document.createElement("li");
@@ -35,7 +34,6 @@ function displayMeeting(meeting, index) {
   meetingList.appendChild(meetingItem);
 }
 
-// Load existing meetings from localStorage
 function loadMeetings() {
   const storedMeetings = localStorage.getItem("meetings");
   if (storedMeetings) {
@@ -46,7 +44,6 @@ function loadMeetings() {
   }
 }
 
-// Save a new meeting
 function saveMeeting(meeting) {
   const storedMeetings = localStorage.getItem("meetings");
   let meetings;
@@ -91,11 +88,9 @@ document
     saveMeeting(meeting);
     displayMeeting(meeting);
 
-    // Clear form inputs
     document.getElementById("meetingForm").reset();
   });
 
-// Load existing meetings when the page is loaded
 loadMeetings();
 
 function goBack() {
