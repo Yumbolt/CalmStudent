@@ -14,8 +14,6 @@
       type="text/css"
       href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
     />
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -32,20 +30,18 @@
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
         border-radius: 5px;
         display: flex;
-        justify-content: space-between;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
       }
 
       .journal-section,
       .previous-entries {
-        width: 48%;
+        width: 100%;
         background-color: rgba(255, 255, 255, 0.07);
         padding: 20px;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
         border-radius: 5px;
-      }
-
-      .journal-section {
-        margin-right: 5%;
       }
 
       h1 {
@@ -87,10 +83,6 @@
         box-sizing: border-box;
       }
 
-      .moods.slider {
-        display: flex;
-      }
-
       .mood.selected,
       .mood:hover {
         border-color: #333;
@@ -114,6 +106,7 @@
         border-radius: 3px;
         border: 1px solid #ccc;
         background-color: rgba(255, 255, 255, 0.05);
+        width: 100%;
       }
 
       textarea {
@@ -199,19 +192,10 @@
       }
 
       .save-entry-btn {
-        width: 25%;
-        display: flex;
-        align-self: flex-end;
-        position: absolute;
-        text-align: center;
-        margin-top: 2%;
+        width: 100%;
+        max-width: 200px;
+        margin-top: 20px;
         transition: 0.3s;
-        padding-top: 8px;
-        margin-right: 15px;
-        margin-bottom: 10px;
-        border-radius: 8px;
-        flex-direction: row;
-        padding-bottom: 0px;
         border: 0;
         border-radius: 6px;
         background-image: radial-gradient(
@@ -225,25 +209,20 @@
         box-sizing: border-box;
         color: #fff;
         cursor: pointer;
-        display: inline-flex;
         font-family: "JetBrains Mono", monospace;
         justify-content: center;
         line-height: 1;
-        height: 32px;
+        height: 40px;
         list-style: none;
         overflow: hidden;
-        padding-left: 16px;
-        padding-right: 16px;
         position: relative;
-        text-align: left;
+        text-align: center;
         text-decoration: none;
         transition: box-shadow 0.15s, transform 0.15s;
         user-select: none;
-        -webkit-user-select: none;
-        touch-action: manipulation;
         white-space: nowrap;
         will-change: box-shadow, transform;
-        font-size: 10px;
+        font-size: 14px;
       }
 
       .slick-prev,
@@ -323,19 +302,18 @@
         <div id="previous-entries-list"></div>
       </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script>
       let selectedMood = "";
 
       function selectMood(mood) {
         selectedMood = mood;
 
-        // Clear the previous selection
         const moodElements = document.querySelectorAll(".mood");
         moodElements.forEach((moodElement) => {
           moodElement.classList.remove("selected");
         });
-
-        // Mark the selected mood
         const selectedMoodElement = document.querySelector(
           ".mood[onclick=\"selectMood('" + mood + "')\"]"
         );
@@ -366,7 +344,6 @@
         document.getElementById("date").value = entry.date;
         document.getElementById("diary").value = entry.diaryEntry;
 
-        // Remove the entry from the list
         entries.splice(index, 1);
         localStorage.setItem("entries", JSON.stringify(entries));
 
@@ -448,8 +425,6 @@
         localStorage.setItem("entries", JSON.stringify(entries));
         displayEntries();
       }
-
-      // Display the entries when the page loads
       initMoodSlider();
       displayEntries();
     </script>
