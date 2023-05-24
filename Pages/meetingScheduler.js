@@ -2,16 +2,36 @@
 function displayMeeting(meeting, index) {
   const meetingList = document.getElementById("meetingList");
   const meetingItem = document.createElement("li");
-  meetingItem.textContent = `Meeting: ${meeting.meetingName} | Date: ${meeting.meetingDate} | Time: ${meeting.startTime} - ${meeting.endTime} | Room: ${meeting.roomLocation} | Supervisor: ${meeting.supervisor}`;
+
+  const meetingName = document.createElement("h3");
+  meetingName.textContent = `Meeting: ${meeting.meetingName}`;
+  meetingItem.appendChild(meetingName);
+
+  const meetingDate = document.createElement("p");
+  meetingDate.textContent = `Date: ${meeting.meetingDate}`;
+  meetingItem.appendChild(meetingDate);
+
+  const meetingTime = document.createElement("p");
+  meetingTime.textContent = `Time: ${meeting.startTime} - ${meeting.endTime}`;
+  meetingItem.appendChild(meetingTime);
+
+  const roomLocation = document.createElement("p");
+  roomLocation.textContent = `Room: ${meeting.roomLocation}`;
+  meetingItem.appendChild(roomLocation);
+
+  const supervisor = document.createElement("p");
+  supervisor.textContent = `Supervisor: ${meeting.supervisor}`;
+  meetingItem.appendChild(supervisor);
 
   const deleteButton = document.createElement("button");
   deleteButton.textContent = "Delete";
+  deleteButton.className = "delete-button";
   deleteButton.onclick = function () {
     deleteMeeting(index);
     meetingList.removeChild(meetingItem);
   };
-
   meetingItem.appendChild(deleteButton);
+
   meetingList.appendChild(meetingItem);
 }
 
@@ -77,3 +97,7 @@ document
 
 // Load existing meetings when the page is loaded
 loadMeetings();
+
+function goBack() {
+  window.history.back();
+}

@@ -126,21 +126,66 @@
       }
 
       .record {
+        position: relative;
         background-color: #eee;
         border-radius: 5px;
         padding: 10px;
         margin-bottom: 10px;
         position: relative;
         background-color: rgba(255, 255, 255, 0.13);
+        transition: all 0.2s ease;
+        cursor: pointer;
+      }
+
+      .record:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
       }
 
       .record-date {
         font-weight: bold;
       }
 
+      .record-date,
+      .record-mood,
+      p {
+        margin: 0;
+        padding: 0;
+      }
+
+      .record-mood {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+      }
+
       .record-mood img {
         width: 30px;
         height: 30px;
+      }
+
+      p {
+        margin-top: 10px;
+        padding: 0 10px;
+      }
+
+      .delete-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: #dc3545;
+        color: white;
+        padding: 7px 15px;
+        border-radius: 5px;
+        border: none;
+        font-size: 0.8rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+      }
+
+      .delete-button:hover {
+        background-color: darkred;
       }
 
       .edit-button {
@@ -354,21 +399,16 @@
           const entryP = document.createElement("p");
           entryP.textContent = entry.diaryEntry;
 
-          const editButton = document.createElement("button");
-          editButton.classList.add("edit-button");
-          editButton.textContent = "Edit";
-          editButton.onclick = () => editEntry(index);
-
           recordDiv.appendChild(dateSpan);
           recordDiv.appendChild(moodSpan);
           recordDiv.appendChild(entryP);
-          recordDiv.appendChild(editButton);
 
           previousEntriesDiv.appendChild(recordDiv);
 
           const deleteButton = document.createElement("button");
           deleteButton.classList.add("delete-button");
           deleteButton.textContent = "Delete";
+          deleteButton.title = "Delete Entry";
           deleteButton.onclick = () => deleteEntry(index);
 
           recordDiv.appendChild(deleteButton);

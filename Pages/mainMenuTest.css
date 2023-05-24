@@ -9,9 +9,8 @@ body {
   margin: 0;
   overflow: hidden;
   --color1: rgb(249, 249, 249);
-  --color2: linear-gradient(90deg, #1cb5e0 0%, #000851 100%);
+  --color2: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
-
 .nav-bar {
   width: 100%;
   display: flex;
@@ -80,7 +79,7 @@ body {
     align-items: center;
     justify-content: center;
     width: 80%;
-    height: 100vh;
+    height: 4em;
     position: fixed;
     top: 0;
     right: -100%;
@@ -114,7 +113,7 @@ body {
   border-color: transparent;
   flex-direction: column;
   justify-content: flex-start;
-  background: linear-gradient(90deg, #1cb5e0 0%, #000851 100%);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
 .main-menu-container1 {

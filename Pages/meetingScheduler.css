@@ -1,7 +1,7 @@
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "JetBrains Mono", monospace; /* Use the modern font across the entire body */
+  color: #ffffff;
   background: linear-gradient(90deg, #1cb5e0 0%, #000851 100%);
-  color: #333;
   margin: 0;
   padding: 0;
 }
@@ -16,8 +16,9 @@ body {
 
 h1 {
   font-size: 2.5rem;
-  text-align: center;
+  text-align: left;
   margin-bottom: 40px;
+  width: 50%;
 }
 
 .scheduler-wrapper {
@@ -27,19 +28,22 @@ h1 {
 
 .scheduler {
   flex: 1;
+  order: 1;
+  font-family: "JetBrains Mono", monospace; /* Modern font */
 }
 
 .scheduler form {
   background-color: rgba(255, 255, 255, 0.07);
   padding: 30px;
-  border-radius: 5px;
+  border-radius: 15px; /* Rounded border */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.5s ease; /* Animation */
 }
 
 .scheduler label {
   font-weight: bold;
   font-size: 1rem;
-  color: rgb(75, 6, 111);
+  color: #ffffff;
 }
 
 .scheduler input,
@@ -50,7 +54,13 @@ h1 {
   border: 1px solid #ccc;
   border-radius: 3px;
   background-color: rgba(255, 255, 255, 0.01);
-  color: rgb(120, 2, 183);
+  color: #ffffff;
+  transition: border 0.3s ease; /* Animation */
+}
+
+.scheduler input:hover,
+.scheduler select:hover {
+  border: 1px solid rgb(120, 2, 183); /* Hover effect */
 }
 
 .scheduler button {
@@ -61,16 +71,62 @@ h1 {
   font-size: 1rem;
   border-radius: 3px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease; /* Animation */
   margin-top: 10px;
+  color: #ffffff;
 }
 
 .scheduler button:hover {
-  background-color: rgb(120, 2, 183);
+  background-color: rgb(120, 2, 183); /* Hover effect */
 }
 
 .meeting-list {
   flex: 1;
+}
+
+.meeting-list ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.meeting-list h3 {
+  color: #fff;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.meeting-list p {
+  color: #ccc;
+  font-size: 1rem;
+  margin: 0.2rem 0;
+}
+
+.meeting-list li .delete-button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.meeting-list li {
+  background-color: rgba(255, 255, 255, 0.15);
+  padding: 20px;
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+  line-height: 1.2;
+  border-radius: 5px;
+  position: relative;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.3s ease;
+}
+
+.meeting-list li:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+.meeting-list li .delete-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 
 h2 {
@@ -92,6 +148,48 @@ ul {
 li {
   margin-bottom: 10px;
   font-size: 1rem;
+}
+.go-back-button {
+  background-color: #6c757d;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.go-back-button:hover {
+  background-color: #5a6268;
+  transform: scale(1.05);
+}
+
+.go-back-button:active {
+  transform: scale(0.95);
+}
+
+.delete-button {
+  background-color: #dc3545;
+  color: white;
+  margin-left: 20px;
+  padding: 7px 15px;
+  border-radius: 5px;
+  border: none;
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.delete-button:hover {
+  background-color: #c82333;
+  transform: scale(1.05);
+}
+
+.delete-button:active {
+  transform: scale(0.95);
 }
 
 @media screen and (max-width: 768px) {
