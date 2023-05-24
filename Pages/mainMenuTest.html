@@ -23,7 +23,7 @@
           </li>
           <input type="checkbox" id="check" />
           <span class="menu">
-            <li><a href="">Home</a></li>
+            <li><a id="logout" onclick="logout()">Logout</a></li>
             <li><a href="/Pages/profile.html">Profile</a></li>
             <label for="check" class="close-menu"
               ><i class="fas fa-times"></i
@@ -69,4 +69,10 @@
       </div>
     </div>
   </body>
+  <script>
+    function logout() {
+      sessionStorage.clear();
+      window.location.href = "/Pages/login.html";
+    }
+  </script>
 </html>
